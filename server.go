@@ -1,14 +1,20 @@
 package main
 
 import (
+	"context"
+	"log"
 	"net/http"
 	"sipil_api/config"
 	"sipil_api/controller"
 	"sipil_api/middleware"
 	"sipil_api/repository"
 	"sipil_api/service"
+	"time"
 
 	"github.com/gin-gonic/gin"
+
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 
 	"gorm.io/gorm"
 )
@@ -50,17 +56,18 @@ var (
 	useremployeeController   controller.UserEmployeeController   = controller.NewUserEmployeeController(useremployeeService, jwtService)
 )
 
-// func Handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
-// 	return &events.APIGatewayProxyResponse{
-// 		StatusCode: 200,
-// 		Body:       "Hello World!",
-// 	}, nil
-// }
+func handler(ctx context.Context, request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
+	for i := 0; i < 60; i++ {
+		log.Println(i)
+		time.Sleep(1 * time.Second)
+	}
+	return nil, nil
+}
 
 func main() {
 	defer config.CloseDatabaseConnection(db)
 	r := gin.Default()
-	// lambda.Start(andler)
+	lambda.Start(handler)
 
 	authRoutes := r.Group("api/auth")
 	{

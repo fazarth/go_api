@@ -3,6 +3,7 @@ module sipil_api
 go 1.15
 
 require (
+	github.com/aws/aws-lambda-go v1.27.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.7.4
 	github.com/joho/godotenv v1.3.0
