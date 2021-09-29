@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "go run"
   functions = "functions"
   publish = "build-output/"
 
