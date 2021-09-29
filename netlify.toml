@@ -1,5 +1,5 @@
 [build]
-  command = "make build"
+  command = "go run server.go"
   functions = "functions"
   publish = "build-output/"
 
