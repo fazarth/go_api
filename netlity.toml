@@ -9,5 +9,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/server.go"
+  to = "/index.html"
   status = 200
