@@ -2,14 +2,12 @@ package main
 
 import (
 	"context"
-	"log"
 	"net/http"
 	"sipil_api/config"
 	"sipil_api/controller"
 	"sipil_api/middleware"
 	"sipil_api/repository"
 	"sipil_api/service"
-	"time"
 
 	"github.com/gin-gonic/gin"
 
@@ -57,11 +55,13 @@ var (
 )
 
 func handler(ctx context.Context, request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
-	for i := 0; i < 60; i++ {
-		log.Println(i)
-		time.Sleep(1 * time.Second)
-	}
-	return nil, nil
+	return &events.APIGatewayProxyResponse{
+		StatusCode:        200,
+		Headers:           map[string]string{"Content-Type": "text/plain"},
+		MultiValueHeaders: http.Header{"Set-Cookie": {"Ding", "Ping"}},
+		Body:              "Hello, World!",
+		IsBase64Encoded:   false,
+	}, nil
 }
 
 func main() {
