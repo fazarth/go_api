@@ -9,6 +9,7 @@ import (
 	"sipil_api/service"
 
 	"github.com/gin-gonic/gin"
+
 	"gorm.io/gorm"
 )
 
@@ -49,9 +50,17 @@ var (
 	useremployeeController   controller.UserEmployeeController   = controller.NewUserEmployeeController(useremployeeService, jwtService)
 )
 
+// func Handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
+// 	return &events.APIGatewayProxyResponse{
+// 		StatusCode: 200,
+// 		Body:       "Hello World!",
+// 	}, nil
+// }
+
 func main() {
 	defer config.CloseDatabaseConnection(db)
 	r := gin.Default()
+	// lambda.Start(andler)
 
 	authRoutes := r.Group("api/auth")
 	{
