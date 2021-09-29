@@ -1,7 +1,7 @@
 [build]
-  command = "./build.sh"
+  command = "make build"
   functions = "functions"
-  publish = "public"
+  publish = "site"
 
 [build.environment]
   GO_IMPORT_PATH = "github.com/fazarth/sipil_api"
