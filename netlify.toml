@@ -1,7 +1,7 @@
 [build]
-  command = "go run ./server.go"
+  command = "./build.sh"
   functions = "functions"
-  publish = "build-output/"
+  publish = "public"
 
 [build.environment]
   GO_IMPORT_PATH = "github.com/fazarth/sipil_api"
